@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<!-- 実装したいフロントエンドの機能
+    
+・文字を入力するたび、文字数をカウントダウン
+・文字数が上限に達したら、メッセージを表示したり、カウントダウンしている文字色を変える
+・投稿確認モーダルを表示する
+
+-->
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -19,6 +26,16 @@
           <div class="mb-5">
             <label for="title" class="block mb-2 text-sm font-medium text-gray-700">title</label>
             <input type="text" id="title" name="title" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+          </div>
+          <div class="mb-5">
+            <label for="category" class="block mb-2 text-sm font-medium text-gray-700">category</label>
+            <select id="category" name="category_id" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
+                @if($categories)
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+                @endif
+            </select>
           </div>
           <div class="mb-5">
             <label for="body" class="block mb-2 text-sm font-medium text-gray-700">Body</label>

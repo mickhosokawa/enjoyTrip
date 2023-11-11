@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
 class TopController extends Controller
@@ -10,9 +12,20 @@ class TopController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('top.index');
+        // POST送信がある時のみ、検索処理を実行
+        if($request->isMethod('post')) {
+            try {
+                $posts = Post::with(['user', 'category'])->paginate(10);
+            } catch(QueryException $e) {
+                $error = $e->getMessage();
+            }
+        } else {
+            $posts = [];
+        }
+
+        return view('top.index', compact('posts'));
     }
 
     /**

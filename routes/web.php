@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\WeatherController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -41,5 +42,8 @@ Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index
 
 Route::get('/top', [TopController::class, 'index'])->name('top.index');
 Route::post('/top', [TopController::class, 'index'])->name('top.index');
+
+// relavant posting
+Route::get('/post', [PostController::class, 'create'])->name('post.create');
 
 require __DIR__.'/auth.php';

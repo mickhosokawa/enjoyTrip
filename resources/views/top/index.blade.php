@@ -22,7 +22,7 @@
 
   <!-- 検索セクション -->
   <section class="container mx-auto mt-12 p-8 bg-white rounded-lg shadow-lg max-w-2xl">
-    <form class="space-y-4">
+    <form class="space-y-4" method="POST" action="{{ route('top.index') }}">
       <div>
         <input type="text" placeholder="Let's explore your destination." class="w-full px-4 py-2 border rounded-lg" />
       </div>

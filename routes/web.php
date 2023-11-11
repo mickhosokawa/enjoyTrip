@@ -37,5 +37,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/top', [TopController::class, 'index'])->name('top.index');
+Route::post('/top', [TopController::class, 'index'])->name('top.index');
 
 require __DIR__.'/auth.php';

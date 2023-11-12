@@ -46,11 +46,22 @@ class PostController extends Controller
         // バリデーション済みデータの取得
         $validated = $request->validated();
         
+        if ($request->hasFile('image_path')) {
+            // ファイルの保存とパスの取得
+            $path = $request->file('image_path')->store('images', 'public');
+        } else {
+            $path = null;
+        } 
+
         $store = Post::create([
             'user_id' => 1,//$this->user->id,
             'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
+            'address' => $request->address,
+            'facility' => $request->facility,
+            'season' => $request->season,
+            'image_path' => $path ? $path : null,
             'created_by' => 1,//$this->user->id,
             'updated_by' => 1,//$this->user->id,
         ]);

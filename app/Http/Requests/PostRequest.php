@@ -27,6 +27,10 @@ class PostRequest extends FormRequest
             'category_id' => 'required',
             'title' => 'required | max:50',
             'body' => 'required | max:200',
+            //'address' => ,
+            //'facility' => ,
+            'season' => 'integer | min:1 | max:12',
+            //'image_path' => ,
         ];
     }
 }

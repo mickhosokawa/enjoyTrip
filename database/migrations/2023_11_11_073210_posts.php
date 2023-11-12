@@ -18,6 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id')->nullable()->comment('choose categories');
             $table->string('title', 50)->nullable()->comment('post title');
             $table->string('body', 500)->nullable()->comment('body');
+            $table->string('address', 200)->nullable()->comment('address');
+            $table->string('facility', 100)->nullable();
+            $table->integer('season')->nullable()->comment('period poster wants to visit');
+            $table->string('image_path')->nullable()->comment('image path');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');
             $table->softDeletes();

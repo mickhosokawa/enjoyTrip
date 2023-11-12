@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- 実装したいフロントエンドの機能
-    
+
 ・文字を入力するたび、文字数をカウントダウン
 ・文字数が上限に達したら、メッセージを表示したり、カウントダウンしている文字色を変える
 ・投稿確認モーダルを表示する
@@ -23,6 +23,16 @@
       <div class="p-5">
         <form action="{{ route('post.store') }}" method="post">
             @csrf
+            <!-- バリデーションメッセージの表示 -->
+            <div class="mb-5">  
+                @if ($errors->any())  
+                    <ul>  
+                        @foreach ($errors->all() as $error)  
+                            <li class="text-red-500">{{ $error }}</li>  
+                        @endforeach  
+                    </ul>  
+                @endif  
+            </div>  
           <div class="mb-5">
             <label for="title" class="block mb-2 text-sm font-medium text-gray-700">title</label>
             <input type="text" id="title" name="title" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>

@@ -11,9 +11,9 @@
   <!-- トップナビゲーション -->
   <nav class="bg-blue-600 text-white py-4">
     <div class="container mx-auto flex justify-between items-center px-6">
-      <div class="font-bold text-xl"><a href="#">Local Tour</a></div>
+      <div class="font-bold text-xl"><a href="/top">Local Tour</a></div>
       <div class="space-x-4">
-        <a href="#" class="hover:underline">Post</a>
+        <a href="/post" class="hover:underline">Post</a>
         {{-- <a href="#" class="hover:underline">お得情報</a> --}}
         <!-- その他のナビゲーションリンク -->
       </div>

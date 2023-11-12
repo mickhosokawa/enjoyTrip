@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title', 50)->nullable()->comment('post title');
             $table->string('body', 500)->nullable()->comment('body');
             $table->unsignedBigInteger('created_by');
-            $table->unsignedBigInteger('update_by');
+            $table->unsignedBigInteger('updated_by');
             $table->softDeletes();
             $table->timestamps();
         });

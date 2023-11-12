@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+
+    protected $user;
+
+    public function __construct()
+    {
+        $this->user = Auth::user();
+    }
     /**
      * Display a listing of the resource.
      */
@@ -32,6 +41,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $store = Post::create([
+            'user_id' => 1,//$this->user->id,
+            'category_id' => $request->category_id,
+            'title' => $request->title,
+            'body' => $request->body,
+            'created_by' => 1,//$this->user->id,
+            'updated_by' => 1,//$this->user->id,
+        ]);
+
         return redirect()->route('top.index');
     }
 

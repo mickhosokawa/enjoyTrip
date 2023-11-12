@@ -21,7 +21,7 @@
         <h2 class="text-xl font-semibold text-white">Post form</h2>
       </div>
       <div class="p-5">
-        <form action="{{ route('post.store') }}" method="post">
+        <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
             @csrf
             <!-- バリデーションメッセージの表示 -->
             <div class="mb-5">  
@@ -34,11 +34,31 @@
                 @endif  
             </div>  
           <div class="mb-5">
-            <label for="title" class="block mb-2 text-sm font-medium text-gray-700">title</label>
+            <label for="title" class="block mb-2 text-sm font-medium text-gray-700">Title</label>
             <input type="text" id="title" name="title" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
           </div>
           <div class="mb-5">
-            <label for="category" class="block mb-2 text-sm font-medium text-gray-700">category</label>
+            <label for="address" class="block mb-2 text-sm font-medium text-gray-700">Address</label>
+            <input type="text" id="address" name="address" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          </div>
+          <div class="mb-5">
+            <label for="facility" class="block mb-2 text-sm font-medium text-gray-700">Facility</label>
+            <input type="text" id="facility" name="facility" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          </div>
+          <div class="mb-5">
+            <label for="season" class="block mb-2 text-sm font-medium text-gray-700">Choose a month when you visit</label>
+            <select id="season" name="season" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                @for ($i = 1; $i <= 12; $i++)
+                    <option value="{{ $i }}">{{ $i }}</option>
+                @endfor
+            </select>
+          </div>
+          <div class="mb-5">
+            <label for="image" class="block mb-2 text-sm font-medium text-gray-700">Image</label>
+            <input type="file" id="image_path" name="image_path" accept="image/*" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          </div>
+          <div class="mb-5">
+            <label for="category" class="block mb-2 text-sm font-medium text-gray-700">Category</label>
             <select id="category" name="category_id" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
                 @if($categories)
                 @foreach ($categories as $category)
@@ -51,7 +71,7 @@
             <label for="body" class="block mb-2 text-sm font-medium text-gray-700">Body</label>
             <textarea id="body" name="body" rows="4" class="shadow-sm bg-gray-50 border border-blue-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
           </div>
-          <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Ask</button>
+          <button type="submit" class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Ask to locals</button>
         </form>
       </div>
     </div>

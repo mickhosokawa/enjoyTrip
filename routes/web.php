@@ -46,5 +46,6 @@ Route::post('/top', [TopController::class, 'index'])->name('top.index');
 // relavant posting
 Route::get('/post', [PostController::class, 'create'])->name('post.create');
 Route::post('/post', [PostController::class, 'store'])->name('post.store');
+Route::get('/post/show/{id}', [PostController::class, 'show'])->name('post.detail');
 
 require __DIR__.'/auth.php';

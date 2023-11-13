@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\WeatherController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,7 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index');
+
 Route::get('/top', [TopController::class, 'index'])->name('top.index');
 Route::post('/top', [TopController::class, 'index'])->name('top.index');
+
+// relavant posting
+Route::get('/post', [PostController::class, 'create'])->name('post.create');
+Route::post('/post', [PostController::class, 'store'])->name('post.store');
 
 require __DIR__.'/auth.php';

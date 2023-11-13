@@ -29,7 +29,7 @@ class PostFactory extends Factory
             'title' => $this->faker->text(50),
             'body' => $this->faker->text(200),
             'created_by' => $userId,
-            'update_by' => $userId,
+            'updated_by' => $userId,
         ];
     }
 }

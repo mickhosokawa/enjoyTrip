@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use App\Models\User;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\RedirectResponse;
@@ -74,9 +75,14 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        $post = Post::find($id);
+        
+        $post = Post::with('threads.user')->find($id);
+        $threads = $post->threads;
+        $userIds = $post->threads->pluck('user_id')->unique();
+        $answerUsers = User::whereIn('id', $userIds)->get();
+        //dd($threads);
 
-        return view('post.detail', compact('post'));
+        return view('post.detail', compact('post', 'threads', 'answerUsers'));
     }
 
     /**

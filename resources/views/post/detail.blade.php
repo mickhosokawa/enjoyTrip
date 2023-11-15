@@ -39,6 +39,20 @@
                </div>
            </div>
         </form>
+        @if($threads)
+        @foreach ($threads as $thread)
+        <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-5">
+            <div class="md:flex">
+            <div class="p-8">
+                <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ $thread->user->name }}</div>
+                <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ $thread->reply }}</div>
+                <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $post->title }}</a>
+                <p class="mt-2 text-gray-500">{{ Str::limit($post->body, 100) }}</p>
+            </div>
+            </div>
+        </div>
+        @endforeach
+        @endif
         <p class="ms-auto text-xs text-gray-500 dark:text-gray-400">Remember, contributions to this topic should follow our <a href="#" class="text-blue-600 dark:text-blue-500 hover:underline">Community Guidelines</a>.</p>
     </div>
   </div>

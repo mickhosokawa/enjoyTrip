@@ -23,4 +23,10 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    // Post が持つ Thread（複数）
+    public function threads()
+    {
+        return $this->hasMany(Thread::class);
+    }
 }

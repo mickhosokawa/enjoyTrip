@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Category::factory(10)->create();
         Post::factory(10)->create();
-
+        $this->call(ThreadsTableSeeder::class);
+        
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

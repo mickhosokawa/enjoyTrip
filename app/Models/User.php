@@ -48,4 +48,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function thread() : HasMany
+    {
+        return $this->hasMany(Thread::class);
+    }
 }

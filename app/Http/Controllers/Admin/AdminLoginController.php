@@ -27,8 +27,13 @@ class AdminLoginController extends Controller
             ]);
         }
 
-        return back()->withErrors([
-            'login' => ['ログインに失敗しました'],
-        ]);
+        $validation = $request->validated();
+        return redirect()->route('admin.login')
+            ->withErrors([
+                'fail' => 'ログインに失敗しました。'
+            ]);
+        // return back()->withErrors([
+        //     'fail' => ['ログインに失敗しました'],
+        // ]);
     }
 }

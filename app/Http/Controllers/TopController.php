@@ -13,20 +13,27 @@ class TopController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {
-        // POST送信がある時のみ、検索処理を実行
-        if($request->isMethod('post')) {
-            try {
-                $posts = Post::with(['user', 'category'])->paginate(10);
-            } catch(QueryException $e) {
-                $error = $e->getMessage();
-            }
-        } else {
-            $posts = [];
-        }
+{
+    // POST送信がある時のみ、検索処理を実行
+    if($request->isMethod('post')) {
+        try {
+            // 検索条件に応じてデータを取得（ここでは例として全ての投稿を取得）
+            $posts = Post::with(['user', 'category'])->paginate(10);
 
+            // JSONレスポンスを返す
+            return response()->json([
+                'posts' => $posts
+            ]);
+        } catch(QueryException $e) {
+            // エラーの場合はエラーメッセージをJSONで返す
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    } else {
+        // GETリクエストの場合は通常のビューを返す
+        $posts = [];
         return view('top.index', compact('posts'));
     }
+}
 
     /**
      * Show the form for creating a new resource.

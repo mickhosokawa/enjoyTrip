@@ -33,6 +33,31 @@ class LoginRequest extends FormRequest
     }
 
     /**
+     *  バリデーション項目名定義
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'email' => 'email',
+            'password' => 'password'
+        ];
+    }
+
+    /**
+     * バリデーションメッセージ
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'email.required' => ':attributeを入力してください。',
+            'email.string' => ':attributeは文字で入力してください。',
+            'password.required' => ':attributeを入力してください。'
+        ];
+    }
+
+    /**
      * Attempt to authenticate the request's credentials.
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -82,4 +107,5 @@ class LoginRequest extends FormRequest
     {
         return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
     }
+
 }

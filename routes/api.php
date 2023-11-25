@@ -3,6 +3,7 @@
 use App\Http\Controllers\ReplyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // 返信用ルート
 Route::post('/posts/{post}/replies', [ReplyController::class, 'store'])->name('reply.store');
+Route::get('/posts', [TopController::class, 'getPosts']);

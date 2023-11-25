@@ -5,9 +5,18 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
     plugins: [
         laravel({
-            input: 'resources/js/app.jsx',
+            input: [
+                'resources/js/app.jsx',
+                'resources/js/searchPost.js',
+            ],
             refresh: true,
         }),
         react(),
+        laravel
     ],
+    // resolve: {
+    //     alias: {
+    //         '@' : 'resources/js',
+    //     },
+    // }
 });

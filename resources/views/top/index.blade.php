@@ -45,7 +45,7 @@
         <div class="md:flex">
           <div class="p-8">
             <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ $post->user->name }}</div>
-            <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $post->title }}</a>
+            <a href="{{ route('post.detail', ['id' => $post->id]) }}" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $post->title }}</a>
             <p class="mt-2 text-gray-500">{{ Str::limit($post->body, 100) }}</p>
           </div>
         </div>

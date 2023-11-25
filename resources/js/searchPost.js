@@ -4,27 +4,30 @@
 document.getElementById('search-button').addEventListener('click', (event) => {
     event.preventDefault();
 
-    let inputDestination = document.getElementById('destination').value; // valueを取得
+    const inputDestination = document.getElementById('title').value; // valueを取得
+    const apiURL = `/api/posts?title=${encodeURIComponent(inputDestination)}`;
 
-    fetch('/top', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: JSON.stringify({ inputDestination: inputDestination })
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // 結果を表示
-        console.log(data);
-    })
-    .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-    });
+    // 非同期通信開始
+    fetch(apiURL)
+        .then((response => response.json()))
+        .then(data => {
+            const resultContainer = document.getElementById('content');
+            resultContainer.innerHTML = '';
+            console.log(data);
+
+            data.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.className = 'max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-5';
+                postElement.innerHTML = `
+                    <div class="md:flex">
+                        <div class="p-8">
+                            <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">${post.user.name}</div>
+                            <a href="/post/detail/${post.id}" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">${post.title}</a>
+                            <p class="mt-2 text-gray-500">${post.body.substring(0, 100)}</p>
+                        </div>
+                    </div>
+                `;
+                resultContainer.appendChild(postElement);
+            });
+        }).catch(error => console.error('Error fetching data:', error));
 });

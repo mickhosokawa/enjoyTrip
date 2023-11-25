@@ -13,6 +13,10 @@
     <div class="bg-white shadow-lg rounded-lg overflow-hidden">
       <div class="p-4 bg-blue-500">
         <h1 class="text-xl text-white font-bold">{{ $post->title }}</h1>
+        <form method="POST" action={{ route('logout') }} >
+          @csrf
+          <button type="submit">Logout</button>
+        </form>
       </div>
       <div class="p-4">
         <p class="text-gray-700"><strong>Poster:</strong> {{ $post->user->name }}</p>

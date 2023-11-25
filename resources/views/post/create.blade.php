@@ -19,6 +19,10 @@
     <div class="w-full max-w-2xl mx-auto bg-white rounded-lg border border-blue-200">
       <div class="p-5 bg-blue-600 rounded-t-lg">
         <h2 class="text-xl font-semibold text-white">Post form</h2>
+        <form method="POST" action={{ route('logout') }} >
+          @csrf
+          <button type="submit">Logout</button>
+        </form>
       </div>
       <div class="p-5">
         <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">

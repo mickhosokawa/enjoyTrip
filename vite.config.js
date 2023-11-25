@@ -13,7 +13,7 @@ export default defineConfig({
             refresh: true,
         }),
         react(),
-        laravel
+        //laravel
     ],
     // resolve: {
     //     alias: {

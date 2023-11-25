@@ -15,6 +15,9 @@ document.getElementById('search-button').addEventListener('click', (event) => {
             resultContainer.innerHTML = '';
             console.log(data);
 
+            // ローディングインジケータを表示
+            document.getElementById('loading').style.display = 'block';
+
             data.forEach(post => {
                 const postElement = document.createElement('div');
                 postElement.className = 'max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl mt-5';
@@ -22,12 +25,16 @@ document.getElementById('search-button').addEventListener('click', (event) => {
                     <div class="md:flex">
                         <div class="p-8">
                             <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">${post.user.name}</div>
-                            <a href="/post/detail/${post.id}" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">${post.title}</a>
+                            <a href="/post/show/${post.id}" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">${post.title}</a>
                             <p class="mt-2 text-gray-500">${post.body.substring(0, 100)}</p>
                         </div>
                     </div>
                 `;
                 resultContainer.appendChild(postElement);
             });
+
+            document.getElementById('loading').style.display = 'none';
+            
         }).catch(error => console.error('Error fetching data:', error));
+            document.getElementById('loading').style.display = 'none';
 });

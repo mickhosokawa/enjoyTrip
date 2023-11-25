@@ -39,6 +39,9 @@
     </form>
   </section>
 
+  <div id="loading" style="display: none;">
+    <p>Now loading...</p>
+  </div>
   <!-- 検索結果表示セクション  -->
   <section id="content">
   </section>

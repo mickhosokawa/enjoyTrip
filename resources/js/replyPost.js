@@ -1,3 +1,25 @@
+// アラート要素を取得
+const alertElement = document.querySelector('.alert-danger');
+
+if (alertElement) {
+    let opacity = 1; // 初期の透明度
+
+    const fadeOut = setInterval(() => {
+        if (opacity <= 0) {
+            clearInterval(fadeOut);
+            alertElement.style.display = 'none'; // 完全に透明になったら非表示にする
+        } else {
+            opacity -= 0.05; // 透明度を徐々に下げる
+            alertElement.style.opacity = opacity;
+        }
+    }, 60); // 60ミリ秒ごとに透明度を更新（この値を変更するとフェードアウト速度が変わる）
+
+    // 3秒後にフェードアウトを開始
+    setTimeout(() => {
+        fadeOut();
+    }, 3000);
+}
+
 // document.getElementById('post-form').addEventListener('submit', (event) => {
     
 //     // abort default event

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Local Tour</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+  @vite(['resources/js/searchPost.js'])
 </head>
 <body class="bg-blue-500">
 
@@ -22,7 +23,7 @@
 
   <!-- 検索セクション -->
   <section class="container mx-auto mt-12 p-8 bg-white rounded-lg shadow-lg max-w-2xl">
-    <form class="space-y-4" method="POST" action="{{ route('top.index') }}">
+    <form class="space-y-4" id="search-button" method="POST" action="{{ route('top.index') }}">
       @csrf
       <div>
         <input type="text" placeholder="Let's explore your destination." class="w-full px-4 py-2 border rounded-lg" />

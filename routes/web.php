@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TopController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\TopController;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
@@ -76,5 +77,7 @@ Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index
 
 Route::get('/top', [TopController::class, 'index'])->name('top.index');
 Route::post('/top', [TopController::class, 'index'])->name('top.index');
+// 直前のURLにアクセスする
+//Route::get("/my-login", [LoginController::class, "index"])->name("myLogin");
 
 require __DIR__.'/auth.php';

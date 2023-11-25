@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Thread;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ReplyRequest;
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReplyController extends Controller
@@ -15,7 +15,7 @@ class ReplyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, string $id)
+    public function store(ReplyRequest $request, string $id)
     {
         
         try {

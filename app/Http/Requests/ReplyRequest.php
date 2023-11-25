@@ -26,11 +26,11 @@ class ReplyRequest extends FormRequest
         ];
     }
 
-    public function message(): array
+    public function messages(): array
     {
         return [
             'reply.required' => 'Reply must be entered.',
-            'reply.min' => 'Please entere a reply with at least 10 characters.'
+            'reply.min' => 'Please enter a reply with at least 10 characters.'
         ];
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
@@ -75,5 +76,6 @@ Route::post('/top', [TopController::class, 'index'])->name('top.index');
 Route::get('/post', [PostController::class, 'create'])->name('post.create');
 Route::post('/post', [PostController::class, 'store'])->name('post.store');
 Route::get('/post/show/{id}', [PostController::class, 'show'])->name('post.detail');
+Route::post('/post/show/{id}', [ReplyController::class, 'store'])->name('reply.store');
 
 require __DIR__.'/auth.php';

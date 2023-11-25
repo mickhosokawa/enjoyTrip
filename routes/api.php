@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReplyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
@@ -19,4 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// 返信用ルート
+//Route::post('/post/show/{post_id}', [ReplyController::class, 'store'])->name('reply.store');
 Route::get('/posts', [TopController::class, 'getPosts']);

@@ -8,11 +8,12 @@ export default defineConfig({
             input: [
                 'resources/js/app.jsx',
                 'resources/js/searchPost.js',
+                'resources/js/replyPost.js',
             ],
             refresh: true,
         }),
         react(),
-        laravel
+        //laravel
     ],
     // resolve: {
     //     alias: {

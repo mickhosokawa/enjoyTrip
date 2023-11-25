@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminRegisterController;
@@ -38,6 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // relavant posting
+    Route::get('/post', [PostController::class, 'create'])->name('post.create');
+    Route::post('/post', [PostController::class, 'store'])->name('post.store');
+    Route::get('/post/show/{id}', [PostController::class, 'show'])->name('post.detail');
+    Route::post('/post/show/{id}', [ReplyController::class, 'store'])->name('reply.store');
 });
 
 /*
@@ -70,10 +76,5 @@ Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index
 
 Route::get('/top', [TopController::class, 'index'])->name('top.index');
 Route::post('/top', [TopController::class, 'index'])->name('top.index');
-
-// relavant posting
-Route::get('/post', [PostController::class, 'create'])->name('post.create');
-Route::post('/post', [PostController::class, 'store'])->name('post.store');
-Route::get('/post/show/{id}', [PostController::class, 'show'])->name('post.detail');
 
 require __DIR__.'/auth.php';

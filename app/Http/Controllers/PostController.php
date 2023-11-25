@@ -82,7 +82,7 @@ class PostController extends Controller
         $answerUsers = User::whereIn('id', $userIds)->get();
         //dd($threads);
 
-        return view('post.detail', compact('post', 'threads', 'answerUsers'));
+        return view('post.detail', compact('post', 'threads', 'answerUsers', 'id'));
     }
 
     /**

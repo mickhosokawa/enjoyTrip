@@ -49,7 +49,7 @@
                 <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ $thread->user->name }}</div>
                 <div class="uppercase tracking-wide text-sm text-indigo-500 font-semibold">{{ $thread->reply }}</div>
                 <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $post->title }}</a>
-                <p class="mt-2 text-gray-500">{{ Str::limit($post->body, 100) }}</p>
+                <p class="mt-2 text-gray-500">{{ Str::limit($thread->reply, 100) }}</p>
             </div>
             </div>
         </div>

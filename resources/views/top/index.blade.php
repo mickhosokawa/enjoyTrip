@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- CSRFトークンのメタタグを追加 -->
   <title>Local Tour</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
   @vite(['resources/js/searchPost.js'])
@@ -17,23 +18,23 @@
         <a href="/post" class="hover:underline">Post</a>
         {{-- <a href="#" class="hover:underline">お得情報</a> --}}
         <!-- その他のナビゲーションリンク -->
-      </div>
+</div>
     </div>
   </nav>
 
   <!-- 検索セクション -->
   <section class="container mx-auto mt-12 p-8 bg-white rounded-lg shadow-lg max-w-2xl">
-    <form class="space-y-4" id="search-button" method="POST" action="{{ route('top.index') }}">
+    <form class="space-y-4" method="POST" action="{{ route('top.index') }}"> <!-- idを削除 -->
       @csrf
       <div>
-        <input type="text" placeholder="Let's explore your destination." class="w-full px-4 py-2 border rounded-lg" />
+        <input type="text" name="destination" id="destination" placeholder="Let's explore your destination." class="w-full px-4 py-2 border rounded-lg" />
       </div>
       {{-- <div class="flex space-x-4">
         <input type="date" class="w-full px-4 py-2 border rounded-lg" />
         <input type="date" class="w-full px-4 py-2 border rounded-lg" />
       </div> --}}
       <div>
-        <button class="w-full bg-red-400 text-white px-4 py-2 rounded-lg">Dive!!</button>
+        <button id="search-button" class="w-full bg-red-400 text-white px-4 py-2 rounded-lg">Dive!!</button> <!-- 検索ボタンにidを設定 -->
       </div>
     </form>
   </section>
@@ -58,7 +59,7 @@
   <section class="container mx-auto mt-8">
     <!-- プロモーションコンテンツ -->
     <!-- ここにプロモーションバナーやコンテンツを配置 -->
-  </section>
+</section>
 
   <!-- Tailwind CSSのスクリプトを読み込み -->
   <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.js"></script>

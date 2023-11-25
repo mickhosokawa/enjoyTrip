@@ -1,3 +1,6 @@
+/**
+ * トップ画面で検索結果を非同期で返す処理
+ */
 document.getElementById('search-button').addEventListener('click', (event) => {
     event.preventDefault();
 
